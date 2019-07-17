@@ -1,24 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import CourseList from './components/course-list';
+import { addAction } from './redux-quack';
+import { useDispatch } from "react-redux";
 
 function App() {
+
+  const dispatch = useDispatch()
+
+  const addCourse = () => {
+      dispatch(addAction(`Curso-${(Math.random() * 100).toFixed(0)}`))
+  }
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <p>Exemplo usando REDUX_HOOKS</p>
+      <button type="button" onClick={addCourse}>Adcionar Curso</button>
+      <CourseList/>
     </div>
   );
 }
